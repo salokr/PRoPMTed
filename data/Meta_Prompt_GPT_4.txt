@@ -1,4 +1,11 @@
-Your task is to understand the Candidate prompt and the corresponding output and provide reason if the output is incorrect or missing given the candidate prompt. You are given certain examples to understand the task. Notice that the candidate prompt may have an output such as "Waiting for the better prompt." in which case you should ignore the output and provide only the better prompt. In addition to reason, you should provide task type and the better prompt in the sequence given in the examples below.
+You are given a candidate prompt and the corresponding output. Your instructions are:
+1) Look at the task (the candidate prompt) and the answer given.
+2)  2. a) If the answer is wrong, provide reasons as to why it is wrong and how to make it right.
+    2. b) If the answer is right, say that it is correct.
+3)  3. a) If the answer was wrong, tell what kind of task it was (the task type) and how to get the better prompt.
+    3. b) If the answer is right, just try to ask the question in a better way anyway along with the task type.
+4) No matter if the answer was right or wrong, try to write the question again in a clearer and better way.
+5) Use the examples given to help you understand what to do and provide your responses in a similar sequential way.
 
 
 ### Candidate Prompt ###
@@ -25,7 +32,7 @@ Your task is to extract the names of diseases or medical conditions and their ke
 3) Exclude Genetic and Biological Terms Not Integral to Disease Names: Do not extract terms related to genes, proteins, or genetic markers unless they form an integral part of the disease's name or classification.
 4) Precise Contextual Extraction: Ensure that the extracted information is a precise representation of how the diseases and their key descriptors are mentioned in the sentence, avoiding any additions or omissions.
 Apply these refined guidelines to the following sentence to extract the disease names and their specific medical descriptors:
-"Familial hypobetalipoproteinemia is an autosomal codominant disorder resulting in a dramatic reduction in plasma concentrations of apolipoprotein (apo) B, cholesterol, and beta-migrating lipoproteins.'
+"Familial hypobetalipoproteinemia is an autosomal codominant disorder resulting in a dramatic reduction in plasma concentrations of apolipoprotein (apo) B, cholesterol, and beta-migrating lipoproteins."
 Provide your answer in the following format: "The answer is [YOUR_ANSWERS]"
 
 
@@ -120,6 +127,7 @@ You are tasked with evaluating whether a tweet contains a claim that is worth fa
 'At present, the country has a total of 1,125,600 million doses of COVID-19 vaccines courtesy of China’s Sinovac and the COVAX Facility’s AstraZeneca. [link]'
 Respond with (1) Yes if the claim is impactful, controversial, or significant enough to influence public discourse and thus is check-worthy. Respond with (0) No if the claim, despite being factual, is more informational and lacks the potential to significantly impact or alter public discourse.
 Provide your answer in the following format: "The answer is [YOUR_ANSWER]"
+
 
 ### Candidate Prompt ###
 Claim:
@@ -293,6 +301,7 @@ Hints for Understanding and Solving the Problem:
 4) Draw It Out: Sometimes visualizing your options for smaller numbers can help clarify how you might approach the larger problem.
 5) Break It Down: If you're stuck, forget about the big number N for a moment. How many ways can you arrange tiles to make up smaller numbers like 2, 3, or 4?
 6) Consider Repetition: You can use each number more than once. How does this affect the different ways you can reach N?
+
 
 ### Candidate Prompt ###
 For the tables created using the following SQL queries:\n CREATE TABLE "mountain" ( "Mountain_ID" int, "Name" text, "Height" real, "Prominence" real, "Range" text, "Country" text, PRIMARY KEY ("Mountain_ID") );  \n CREATE TABLE "climber" ( "Climber_ID" int, "Name" text, "Country" text, "Time" text, "Points" real, "Mountain_ID" int, PRIMARY KEY ("Climber_ID"), FOREIGN KEY ("Mountain_ID") REFERENCES "mountain"("Mountain_ID") );\n An SQL query to "Show the range that has the most number of mountains." is to be written by you.
