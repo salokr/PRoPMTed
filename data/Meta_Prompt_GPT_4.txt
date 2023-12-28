@@ -1,9 +1,9 @@
 You are given a candidate prompt and the corresponding output. Your instructions are:
-1) Look at the task (the candidate prompt) and the answer given.
-2)  2. a) If the answer is wrong, provide reasons as to why it is wrong and how to make it right.
-    2. b) If the answer is right, say that "Output is correct".
-3)  3. a) If the answer was wrong, tell what kind of task it was (the task type) and how to get the better prompt.
-    3. b) If the answer is right, just try to ask the question in a better way anyway along with the task type and say that say that "Output is correct".
+1) Analyze the candidate prompt and the output given and check if the output is correct or not.
+2)  2. a) If the output is wrong, provide reasons as to why it is wrong and how to make it right.
+    2. b) If the output is right, say that "Output is correct".
+3)  3. a) If the output was wrong, tell what kind of task it was (the task type) and how to get the better prompt.
+    3. b) If the output is right, just try to ask the question in a better way anyway along with the task type and say that say that "Output is correct".
 4) No matter if the answer was right or wrong, try to write the question again in a clearer and better way.
 5) Use the examples given to help you understand what to do and provide your responses in a similar sequential way.
 
@@ -330,83 +330,90 @@ Your task is to write an SQL query to find out which mountain range contains the
 
 
 ### Candidate Prompt ###
-Alice and Bob decide to go on a cycling trip. Alice rides at a constant speed and covers a distance of 90 kilometers in 3 hours. Bob starts his journey 30 minutes after Alice but wants to catch up to her by increasing his speed. If Bob travels at a constant speed of 40 kilometers per hour, how long will it take for Bob to catch up with Alice?
+Valerie needs to put stamps on the envelopes she is about to mail. She has thank you cards for each of her grandmother, uncle and aunt for the birthday presents they sent. She also has to pay the water bill and the electric bill separately. She wants to send three more mail-in rebates than she does bills and she has twice as many job applications as rebates to mail. How many stamps does she need if everything needs 1 stamp except the electric bill, which needs 2?
 
 ### Output ###
-First, let's convert the time difference between Alice and Bob's start times to hours. We know that there are 60 minutes in an hour, so 30 minutes is equal to 30/60 = 0.5 hours.
-Since Bob wants to catch up to Alice, we can calculate the head start Alice has by multiplying her speed by the time difference: 90 kilometers/hour * 0.5 hours = <<90*0.5=45>>45 kilometers.
-Now, we can calculate the relative speed between Bob and Alice: 40 kilometers/hour - Alice's speed of 90 kilometers/3 hours = 40 kilometers/hour - 30 kilometers/hour = 10 kilometers/hour.
-To find the time it takes for Bob to catch up to Alice, we divide the distance he needs to cover to catch up (45 kilometers) by the relative speed between the two (10 kilometers/hour): 45 kilometers / 10 kilometers/hour =<<45/10=4.5>>4.5 hours. Answer: \boxed{4.5}.
+Valerie has 3 thank you cards, so she needs 3 stamps.\nShe has 2 bills, so she needs 2 + 1 + 1 = <<2+1+1=4>>4 stamps.\nShe has 3 + 2 = <<3+2=5>>5 rebates, so she needs 5 stamps.\nShe has 2 * 5 = <<2*5=10>>10 job applications, so she needs 10 stamps.\nShe needs 3 + 4 + 5 + 10 = <<3+4+5+10=22>>22 stamps. Answer: \\boxed{22}.
 
 ### Reason ###
-The problem statement provided is clear and contains sufficient information to find the solution, but the error in the solution lies in the misunderstanding and incorrect application of the given data. Let's break down the issues:
-1) Ambiguity in the percentage increase: The candidate prompt lacked clarity on what the 150% increase applied to, leading to multiple interpretations. The Better Prompt should address this by specifying that the 150% increase refers to the original purchase price of the house, removing ambiguity and guiding the model towards the correct calculations.
-2) Lack of detailed guidance: The candidate prompt lacked step-by-step instructions or hints, which could lead to overlooking critical steps or misinterpreting the problem. The better prompt should address this by breaking down the problem into clear, sequential steps and providing a hint about what a 150% increase means, guiding the user and the model through a logical sequence of calculations.
-3) Assumption of model's understanding: The candidate prompt assumed that the model would inherently understand the context and details of the house flipping scenario, which isn't always the case. The better prompt should address this by explicitly outlining the context and the specific steps involved in the process, leaving less room for misinterpretation.
-4) Lack of clarity in desired honesty and transparency: The candidate prompt didn't encourage the model to express uncertainty or clarify ambiguities, potentially leading to overconfident or incorrect answers. The better prompt should address this by explicitly asking the model to evaluate the clarity of the problem and to state any uncertainties or ambiguities, promoting a more honest and thoughtful response.
-5) No encouragement for critical evaluation: The candidate prompt didn't encourage the model to critically evaluate the problem statement itself for potential issues or missing information. The better prompt should address this by instructing the model to first assess the clarity and completeness of the problem statement, encouraging a more analytical approach that can identify and rectify issues before attempting a solution
-6) Lack of Structured Output: The better prompt should have an output format such as the "The answer is [YOUR_ANSWER]"
-By addressing these issues, the improved prompt is more likely to elicit a correct, honest, and transparent response from the model, leading to a better understanding and solution of the problem.
+The problem statement provided is clear and contains sufficient information to find the solution, but there is an error in the solution that lies in the misunderstanding and incorrect application of the given data. Let's break down the issues:
+1) Candidate Prompt lacks Emphasis on Special Conditions
+While the Candidate Prompt mention the special condition of the electric bill requiring an extra stamp, they don't emphasize it enough or clarify its importance in the overall calculation. The better prompt should address this by explicitly highlighting the electric bill's unique requirement in a separate sentence and context, ensuring the solver understands its significance and remembers to include it in the final tally.
+2) Candidate Prompt assumes Model Understanding of Context
+The Candidate Prompt assume that the solver, whether human or AI, will automatically give special consideration to the unique condition of the electric bill without clear guidance. The better prompt should overcome this by offering direct and unmistakable instructions on how to handle the electric bill, making it almost impossible to overlook or misunderstand the requirement.
+3) Candidate Prompt uses Overly Complex or Technical Language
+The candidate prompt uses language or a structure that's too complex or technical, which can lead to misunderstandings or misinterpretations, especially for younger audiences or AI models. The better prompt should use simple, friendly, and accessible language, breaking down the problem into relatable scenarios. This approach reduces the cognitive load and potential confusion, making it easier to follow and solve.
+4) Candidate Prompt has Sequential Ambiguity
+Candidate Prompt might not clearly define the sequence of operations or how to systematically approach the problem, leading to overlooked details or miscalculations. The better prompt should provide a clear, step-by-step breakdown of the problem, guiding the solver through each part systematically. This structure helps ensure that all elements, especially the electric bill's extra stamp, are considered in the correct order.
+5) Candidate Prompt had Insufficient Contextualization
+The Candidate Prompt do not provides enough context or rationale behind why certain items require more stamps, which might lead to overlooking critical details.
+The better prompt should offer a narrative and reasons behind the requirements, such as explaining why the electric bill is bulkier and thus needs an extra stamp. This context helps the solver understand the logic behind the conditions and remember them when calculating.
+6) Candidate Prompt makes Implicit Assumptions
+The candidate prompt implicitly assumes that the solver will add correctly and not double-count or miss any items, leading to errors. 
+The better prompt should include reminders and checks against common mistakes, such as double-counting the extra stamp for the electric bill, ensuring a more accurate final calculation.
+7) Lack of Structured Output: The better prompt should have an output format such as the "The answer is [YOUR_ANSWER]"
+By addressing these issues, the better prompt significantly reduces the likelihood of misunderstanding or overlooking critical details, leading to a more accurate and reliable answer from the solver, whether it's a person or an AI model.
 
 ### Task Type ###
 [MATHEMATICAL REASONING]
 
 ### Better Prompt ###
-Josh decides to embark on a house-flipping project. He purchases a house for $80,000. After buying the house, Josh spends an additional $50,000 on repairs. These improvements significantly increase the house's value. Specifically, the value of the house after repairs is 150% more than the original purchase price. Calculate the total amount Josh spent and then determine the new value of the house. Based on these figures, how much profit did Josh make from this project? Note: A 150% increase means the new value is 250% of the original value. Break down your calculations step by step.
+Valerie has a special task today, and she needs your help to figure out how many stamps she needs for her mail. She's got a few different things to send, and each one needs a certain number of stamps. Let's help her count them together!
+1) Thank You Cards: Valerie has made thank you cards for three special people: her grandmother, uncle, and aunt. Each card needs just one stamp. Imagine you're putting one pretty stamp on each card.
+2) Bills: Now, Valerie has two bills to pay: the water bill and the electric bill. The water bill is like the cards and needs just one stamp. But the electric bill is a bit bigger and needs two stamps. Let's remember this special case!
+3) Mail-in Rebates: Valerie loves saving money! She has a few mail-in rebates to send. She has three more rebates than the number of bills. If you were sending out your own money-saving rebates, how many would you have? Each one of these needs one stamp too.
+4) Job Applications: Valerie is also looking for a new job and has some applications to send out. She has twice as many applications as she has rebates. These are important, so she'll put one stamp on each.
+Here's How We Can Help Valerie:
+1) Counting Thank You Cards: Let's count the stamps for the thank you cards together. How many people is she sending them to?
+2) Counting Bills: Next, let's count the stamps for the bills. Remember, the water bill is just like the thank you cards, but the electric bill needs one extra stamp because it's a bit bigger. Can you add those up?
+3) Counting Rebates: Valerie has a few more rebates than bills. If you know how many bills she has, can you figure out how many rebates there are? Let's count the stamps for these next.
+4) Counting Job Applications: Finally, Valerie has those important job applications. She has twice as many of these as rebates. How many stamps will these need?
+5) Total Up the Stamps: Now that we've counted the stamps for each type of mail, can you add them all up to find out how many stamps Valerie needs in total? Remember, every piece of mail gets one stamp, but the electric bill is a bit bigger and needs one more.
 Provide your answer in the following format: "The answer is [YOUR_ANSWER]"
 
 
 ### Candidate Prompt ###
-To participate in the local community tree-planting campaign, Mr. Julius planted twenty trees of White Oak and twice as many Lodgepole Pine as White Oak on his first day. On the second day, he planted 10 more White Oak trees and 1/4 more Lodgepole Pine trees than he planted on the first day. Calculate the total number of trees planted by Mr. Julius in the two days.
+Five months ago, Mike earned 10 times more money than Fred. If his salary has increased by 40 percent now, and Fred's salary then was $1000, calculate Mike's salary now.
 
 ### Output ###
-On the first day, Mr. Julius planted 2*20 = <<2*20=40>>40 Lodgepole Pine trees because it's twice as many as White Oak.
-The total number of trees Mr. Julius planted on the first day is 40 Lodgepole Pine+20 White Oak=<<40+20=60>>60 trees.
-On the second day, Mr. Julius planted 1/4*40 = <<1/4*40=10>>10 more Lodgepole Pine trees than he did on the first day.
-The total number of Lodgepole Pine trees that Mr. Julius planted on the second day is 40 Lodgepole Pine+10 more=<<40+10=50>>50 Lodgepole Pine trees.
-In addition to the White Oak trees he planted on the second day, Mr. Julius planted 50 Lodgepole Pine+10 White Oak = <<50+10=60>>60 trees.
-Thus, in the two days, Mr. Julius planted 60 trees on the first day+60 trees on the second day = <<60+60=120>>120 trees. Answer: \boxed{120}.
+Since Fred's salary was $1000, five months ago, and Mike earned 10 times more money than Fred, Mike earned 10*$1000=$<<10*1000=10000>>10000 five months ago.
+If Mike's salary has increased by 40 percent now, his salary increment is 40/100*$10000=$<<40/100*10000=4000>>4000
+The total salary Mike earns now is $10000+$4000=$<<10000+4000=14000>>14000. Answer: \boxed{14000}.
 
 ### Reason ###
-1) Lack of Clarity on Day-to-Day Actions:
-The Candidate Prompt lacked clear separation between the actions taken on each day, which could lead to confusion over how many trees were planted on each day.
-The Better Prompt should address this by explicitly dividing the problem into "Day 1" and "Day 2" sections, providing a structured timeline of events.
-2) Vague Descriptions of Quantity Increases:
-The Candidate Prompt lacked specific instructions on how the additional trees were calculated, particularly the 1/4 more Lodgepole Pines, leading to potential miscalculations.
-The Better Prompt should address this by providing a clear, step-by-step guide on how to calculate the increased number of trees on the second day, eliminating ambiguity.
-3) Assumptions about Tree Ratios:
-The Candidate Prompt lacked explicitness in the relationship between the number of White Oak and Lodgepole Pine trees, possibly leading to incorrect assumptions.
-The Better Prompt should address this by clearly stating the exact ratio of White Oak to Lodgepole Pine trees, removing any doubt about their relationship.
-4) Insufficient Guidance for Problem-Solving Approach:
-The Candidate Prompt lacked hints or guidance on how to approach the problem, which might leave some solvers uncertain about where to begin or how to proceed.
-The Better Prompt should address this by providing hints and encouraging a step-by-step calculation, guiding the solver through the process and encouraging a methodical approach.
-5) Ambiguity in Total Calculation:
-The Candidate Prompt lacked clear instructions on how to combine the calculations from both days, which might lead to incomplete or incorrect totals.
-The Better Prompt should address this by explicitly asking for the total number of trees over the two days and reminding to sum up all the parts, ensuring a comprehensive final answer.
-6) Encouragement of Critical Thinking and Honesty:
-The Candidate Prompt lacked an invitation for critical thinking or a mechanism for the solver to express uncertainty or ask for clarification, potentially leading to guesses or incorrect answers without acknowledgment of uncertainty.
-The Better Prompt should address this by explicitly stating that transparency and thoroughness are appreciated and by inviting the solver to state any assumptions or unclear parts, fostering an environment where it's okay to ask questions or express uncertainty.
+The solution is incorrect as there are errors in the solution that lies in the misunderstanding and incorrect application of the given data. Let's break down the issues:
+1) Candidate Prompt has ambiguous use of "more."
+Better Prompt should explicitly define "10 times more" as adding 10 times Fred's salary to Fred's original salary, avoiding any ambiguity about whether it's "10 times as much" or "10 times plus the original amount."
+2) Candidate Prompt lacks step-by-step guidance.
+Better Prompt should breaks down the problem into clear, sequential steps, guiding the solver through the process of calculating the original salary, the increase, and then the current salary.
+3) Candidate Prompt assumes prior knowledge.
+Better Prompt should clarify key mathematical concepts, like the distinction between "10 times as much" and "10 times more," ensuring the solver understands exactly what calculations are needed.
+4) Candidate Prompt fails to emphasize crucial calculation details.
+Better Prompt should highlights important calculation steps and what they mean, such as explicitly stating to add Fred's original salary to the multiplied amount to avoid misinterpretation.
+5) Candidate Prompt uses language that can be interpreted in multiple ways.
+Better Prompt should use precise language and definitions to eliminate ambiguity, ensuring the terms like "10 times more" are clearly understood in the context of the problem.
+6) Candidate Prompt does not address potential misconceptions or common mistakes.
+Better Prompt should point out common pitfalls and specifically instructs the solver on how to avoid them, such as reminding them to add the original salary to the calculated '10 times more' amount.
 7) Output Structure: The better prompt should have an output format such as the "The answer is [YOUR_ANSWER]"
-By addressing these issues, the improved prompt is more likely to elicit a correct, honest, and transparent response from the model, leading to a better understanding and solution of the problem.
+By addressing these issues, the Better Prompt provides a clear, unambiguous path to the correct answer, guiding the solver through each step and ensuring they understand the mathematical concepts involved. This approach minimizes the risk of misinterpretation and calculation errors, leading to a more successful problem-solving experience.
 
 ### Task Type ###
 [MATHEMATICAL REASONING]
 
 ### Better Prompt ###
-Mr. Julius is participating in a local community tree-planting campaign over the course of two days. His goal is to contribute by planting White Oak and Lodgepole Pine trees. Your task is to calculate the total number of trees he plants over these two days based on the following details:
-Day 1:
-Mr. Julius starts his campaign by planting White Oak trees. He plants exactly 20 White Oak trees.
-He wants to plant Lodgepole Pine trees as well and decides that the number of Lodgepole Pines should be exactly twice the number of White Oaks planted. Calculate the number of Lodgepole Pine trees he plants on this day.
-Day 2:
-Encouraged by his progress, Mr. Julius plants more White Oak trees. He plants 10 more than he did on the first day.
-For the Lodgepole Pine trees, he decides to add an additional 1/4 of the number he planted on Day 1 to the total he plants on Day 2. Calculate the number of Lodgepole Pine trees he plants on this day.
+Five months ago, Mike and Fred were colleagues at a company, each earning different salaries. You are tasked with calculating Mike's current salary, considering a significant increase over the past few months. Here's the information you need:
+1) Fred's Past Salary: Five months ago, Fred's salary was $1,000.
+2) Mike's Past Salary: At the same time, Mike was earning not just a multiple of Fred's salary, but an amount that was 10 times more than Fred's salary. This means if Fred earned $1,000, Mike earned an additional $10,000 on top of this. In other words, Mike's total earnings were Fred's salary plus 10 times that amount. It's crucial to understand this to determine Mike's original total salary.
+3) Mike's Recent Salary Increase: Over the past five months, Mike's salary has increased by 40%. This increase is based on Mike's entire original salary — the total amount he was earning five months ago.
 Your Task:
-Calculate the total number of trees (White Oak and Lodgepole Pine) that Mr. Julius plants over the two days.
-Hints to Guide Your Calculation:
-Break down the problem by day and tree type. Calculate the total for each type of tree on each day, then combine these to find the overall total.
-Remember to consider the additional 1/4 of Lodgepole Pines planted on the second day. This is in addition to the number he planted on the first day.
-Ensure all your calculations are clear and accounted for before adding up the totals.
-Note: If any part of this problem is unclear, or if you need to make assumptions, please state these explicitly in your solution. Your thoroughness and transparency are appreciated!
+Using the information provided, calculate Mike's current salary. Consider the following steps:
+1) Determine Mike's Original Salary: Calculate the total amount Mike was earning five months ago. This will be the sum of Fred's salary and the additional amount that was 10 times Fred's salary.
+2) Calculate the Percentage Increase: Understand that a 40% increase applies to Mike's total original salary. Calculate 40% of this total to find out how much his salary has increased.
+3) Find Mike's Current Salary: Add the increase to Mike's original salary to determine his current salary.
+Considerations:
+1) Misinterpreting "10 times more" is a common mistake. Ensure you're calculating the total of Fred's salary and the additional amount Mike earned.
+2) When calculating the 40% increase, apply it to the total original salary of Mike, not just the additional amount.
+3) Take your time with each step, and double-check your calculations to ensure accuracy.
 Provide your answer in the following format: "The answer is [YOUR_ANSWER]"
 
 
