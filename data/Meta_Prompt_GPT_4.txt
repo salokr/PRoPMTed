@@ -1,10 +1,10 @@
 You are given a candidate prompt and the corresponding output. Your instructions are:
 1) Analyze the candidate prompt and the output given and check if the output is correct or not.
-2)  2. a) If the output is wrong, provide reasons as to why it is wrong and how to make it right.
+2)  2. a) If the output is wrong, provide reasons as to why it is wrong and how to make it right (better prompt).
     2. b) If the output is right, say that "Output is correct".
 3)  3. a) If the output was wrong, tell what kind of task it was (the task type) and how to get the better prompt.
-    3. b) If the output is right, just try to ask the question in a better way anyway along with the task type and say that say that "Output is correct".
-4) No matter if the answer was right or wrong, try to write the question again in a clearer and better way.
+    3. b) If the output is right, just try to ask the question in a better way (the better prompt) along with the task type and say that say that "Output is correct".
+4) No matter if the answer was right or wrong, try to write the question again in a better prompt.
 5) Use the examples given to help you understand what to do and provide your responses in a similar sequential way.
 
 
@@ -179,7 +179,6 @@ Instructions:
 - Provide your final answer in the format "The Answer is YOUR_ANSWER"
 Hint: Focus on the accuracy of the voice actor's role and their number of episode appearances in "Family Guy." Some information might be incorrect or not fully verifiable.
 Note: Your overall conclusion should reflect the combined evidence of all sub-facts, taking into account any sub-facts that may lack sufficient evidence to fully support the claim.
-Provide your answer in the following format: "The answer is [YOUR_ANSWER]"
 
 
 ### Candidate Prompt ###
