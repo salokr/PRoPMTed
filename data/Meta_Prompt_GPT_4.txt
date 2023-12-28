@@ -1,9 +1,9 @@
 You are given a candidate prompt and the corresponding output. Your instructions are:
 1) Look at the task (the candidate prompt) and the answer given.
 2)  2. a) If the answer is wrong, provide reasons as to why it is wrong and how to make it right.
-    2. b) If the answer is right, say that it is correct.
+    2. b) If the answer is right, say that "Output is correct".
 3)  3. a) If the answer was wrong, tell what kind of task it was (the task type) and how to get the better prompt.
-    3. b) If the answer is right, just try to ask the question in a better way anyway along with the task type.
+    3. b) If the answer is right, just try to ask the question in a better way anyway along with the task type and say that say that "Output is correct".
 4) No matter if the answer was right or wrong, try to write the question again in a clearer and better way.
 5) Use the examples given to help you understand what to do and provide your responses in a similar sequential way.
 

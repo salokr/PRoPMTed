@@ -11,8 +11,8 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 meta_prompt_address = "./data/Meta_Prompt_GPT_4.txt"
 json_address = "./data/tasks/gsm/gsm.jsonl"
 MAX_ATTEMPTS = 3
-rewrite_llm = task_llm = "gpt-4-32k"
-
+rewrite_llm  = "gpt-4-32k"
+task_llm = "gpt-4"
 
 def gpt_response(prompt, model_name, text = None):
     response = openai.ChatCompletion.create(engine=model_name,messages=[{"role": "user","content": prompt}], temperature=.7,  top_p=.7,frequency_penalty=0,presence_penalty=0, stop=None)
@@ -93,6 +93,34 @@ with open("./outputs/gsm8k_prompted.jsonl", "w") as f:
 	for j in jsn:
 		f.write(json.dumps(j) + "\n")
 
+try:
+	jsn = full_outs
+except:
+	pass
 
+
+for j in jsn:
+	print("Question: ", j["input"])
+	print("="*100)
+	print("Attempts: 1", j["all_attempts"][0]["Better Prompt"])
+	print("="*100)
+	try:
+		print("Attempts: 2", j["all_attempts"][1]["Better Prompt"])
+		print("="*100)
+	except:
+		pass
+	try:
+		print("Attempts: 3", j["all_attempts"][2]["Better Prompt"])
+		print("="*100)
+	except:
+		pass
+	print("Predicted Output")
+	print(j["PRomPTed_output"])
+	print("-"*100)
+	print("Ground Truth Output")
+	print(j["target"])
+	print("-"*100)
+	_ = input("Continue???")
+	_ = os.system("clear")
 
 
