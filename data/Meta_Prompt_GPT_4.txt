@@ -3,9 +3,11 @@ You are given a candidate prompt and the corresponding output. Your instructions
 2)  2. a) If the output is wrong, provide reasons as to why it is wrong and how to make it right (better prompt).
     2. b) If the output is right, say that "Output is correct".
 3)  3. a) If the output was wrong, tell what kind of task it was (the task type) and how to get the better prompt.
-    3. b) If the output is right, just try to ask the question in a better way (the better prompt) along with the task type and say that say that "Output is correct".
+    3. b) If the output is right, just try to ask the question in a better way (the better prompt) along with the task type and say that "Output is correct".
 4) No matter if the answer was right or wrong, try to write the question again in a better prompt.
-5) Use the examples given to help you understand what to do and provide your responses in a similar sequential way.
+5) Remember for the candidate prompt given with options, you should include all the options in the better prompt while rewriting and should not skip them.
+6) Remember while rewriting the candidate prompt into a better prompt you should not skip the relevant information such as given options, tables, images, numerical data, etc. from the candidate prompt. 
+7) Use the examples given below to help you understand what to do and provide your responses in a similar sequential way following the same headers such as "### Reasons ###", "### Task Type ###", etc.
 
 
 ### Candidate Prompt ###
