@@ -51,6 +51,10 @@ def stopping_criterion(reason):
     return False
 
 def extract_answer(response):
+    # Note 1: For toxic chats, we don't have an evaluation metrics. 
+    # Note 2: Since this is a content generation task, We don't have a format specifier
+    # Therefore, we return the output as is and the evaluation is done manually.
+    # But, we can specify any other library here which can extract the answer or evaluate the toxicity here.
     return response
 
 
