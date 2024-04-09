@@ -16,9 +16,9 @@ parser.add_argument("--meta_prompt_address", type = str, default = "./data/Meta_
 
 args = parser.parse_args()
 
-openai.api_type = "azure"
-openai.api_base = "https://openai-access-canada-east.openai.azure.com/"
-openai.api_version = "2023-07-01-preview"
+openai.api_type = "[PLEASE SET]"
+openai.api_base = "[PLEASE SET]"
+openai.api_version = "[PLEASE SET]"
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
