@@ -1,60 +1,75 @@
 # PRoPMTed
+This repository contains the code for our paper: Instances Need More Care: Rewriting Prompts for Instances with LLMs in the Loop Yields Better Zero-Shot Performance.
 
+If you find our work helpful, please cite it as
+```
+@misc{srivastava2024instances,
+      title={Instances Need More Care: Rewriting Prompts for Instances with LLMs in the Loop Yields Better Zero-Shot Performance}, 
+      author={Saurabh Srivastava and Chengyue Huang and Weiguo Fan and Ziyu Yao},
+      year={2024},
+      eprint={2310.02107},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+```
 ## Setting up the environment.
-First install the dependecies from requirements.txt using
-```
-pip install requirements.txt
-```
+This project is tested in Python 3.9.6.
 
+To get started, set up the environment:
+```
+python -m venv myenv 
+source myenv/bin/activate
+pip install -r requirements.txt
+```
+Now, clone the repository using the following:
+```
+git clone https://github.com/salokr/PRoPMTed.git
+cd PRoPMTed
+```
 ## Setting up the keys.
 Set the OpenAI key using the following command:
 ```
 export OPENAI_API_KEY = <YOUR_KEY>
 ```
-
-## Choosing the correct models for the experiments.
-Please make sure that you use the correct names for LLMs for experiments. For example, when using GPT-4 as MetaLLM, we use the GPT-4-32K version which can be specified using `gpt-4-32k`. Please look at the available models and their names for the API services you are using.
+ Note*: Please note that our code supports only OpenAI and Azure API calls. If you intend to use Azure API, please additionally specify the api_version, api_base, and api_version in the code.
 
 ## Running the experiments.
-Different task types and datasets uses different scripts because of the availability of the answer extraction techniques (such as multiple choices and mathematical answer have different answer extraction scripts while for toxicity we use manual evaluation).
+Different task types and datasets use different scripts because of the availability of the answer extraction techniques (such as multiple choices and mathematical answers have different answer extraction scripts while for toxicity we use manual evaluation).
 
-Because of this, we provide different script for different datasets.
+Because of this, we provide different scripts for different datasets.
 
-### Running the Toxicty Experiments.
-Use the follwoing code to run the experiments:
+### Running the Toxicity Experiments.
+Use the following code to run the experiments:
 ```
 python toxic_chats.py --meta_llm gpt-4-32k --task_llm gpt-4 --max_attempts 3 --dataset_address <path_to_toxic_chat_json> --meta_prompt_address <path_to_meta_prompts>
 ```
-`Where` 
+Where 
 - --max_attempts: The maximum number of refinement attempts to be made.
 - --dataset_address: The location of the dataset to be tested on. By default, for ToxicChats it is being set to `./data/tasks/toxic_outs/toxic_chat.json`
 - --meta_prompt_address: The location of meta prompts. Default: `./data/Meta_Prompt_GPT_4.txt`
 
-**Make sure to use the correct meta prompt file for each Task LLM. For GPT-4 please use `Meta_Prompt_GPT_4.txt` while for GPT-3.5-turbo please use the file `Meta_Prompt_GPT_35.txt`**. To create a new script for a new TaskLLM, please follow the sintructions provided in the paper.
+**Make sure to use the correct meta prompt file for each Task LLM. For GPT-4 please use `Meta_Prompt_GPT_4.txt` while for GPT-3.5-turbo please use the file `Meta_Prompt_GPT_35.txt`**. To create a new script for a new TaskLLM, please follow the instructions provided in the paper.
 
+### In the following table, we enumerate parameters to run our code.
+|    **Meta LLM**    |    **Task LLM**    |    **Meta Prompt Address**    |                                                                       **Command**                                                                      |
+|:------------------:|:------------------:|:-----------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|      gpt-4-32k     |        gpt-4       |  ./data/Meta_Prompt_GPT_4.txt |             python toxic_chats.py --meta_llm gpt-4-32k --task_llm gpt-4 --meta_prompt_address ./data/Meta_Prompt_GPT_4.txt --max_attempts 3            |
+| gpt-3.5-turbo-1106 |        gpt-4       |  ./data/Meta_Prompt_GPT_4.txt |        python toxic_chats.py --meta_llm gpt-3.5-turbo-1106 --task_llm gpt-4 --meta_prompt_address ./data/Meta_Prompt_GPT_4.txt --max_attempts 3        |
+| gpt-3.5-turbo-1106 | gpt-3.5-turbo-1106 | ./data/Meta_Prompt_GPT_35.txt | python toxic_chats.py --meta_llm gpt-3.5-turbo-1106 --task_llm gpt-3.5-turbo-1106 --meta_prompt_address ./data/Meta_Prompt_GPT_35.txt --max_attempts 3 |
 
 ## Collecting the Outputs.
-For each test instance, our script will automatically collect the zero-shot outputs, zero-shot-CoT outputs (optionally), the better prompts, the reasons, the task types, and the final answer. The output file has the following fields in the key value format:
-- zero-shot-answer: The zero-shot response from TaskLLM.
-- Reason (`PRomPTed_reason`): Reason why candidate prompt was modified or was left untouched.
+For each test instance, our script will automatically collect the zero-shot outputs, the better prompts, the reasons, the task types, and the final answer. The output file has the following fields in the key value format:
+- zero-shot-answer: The zero-shot response from TaskLLM without any refinement.
+- Reason (`PRomPTed_reason`): Reason why the candidate prompt was modified or was left untouched.
 - Task Type (`task_type`): The Task Type of the test instance e.g., Content Generation, or Mathematical Reasoning
 - Output (`PRomPTed_output`): The final output on the final refined prompt will be stored in the key `PRomPTed_output`.
-- (Optional) Zero-Shot-CoT: Although the code is by default commented to collect Zero-Shot-Cot response, one can uncomment them and then the output instance will have an additional key-value object for Zero-Shot-CoT namely
-  - prompt: The trigger phrase used for Zero-Shot-CoT. Be default: `A: Let's think step by step.`
-  - zero_shot_cot_answer: The answer from TaskLLM using zero-shot-CoT trigger phrase.
-- All Rewritten Prompts, Reasons, and Task Types are stored in `all_attempts`. This is a list of dictionary which contains all the rewriting attempts, their reasons, and their task types.
+- All Rewritten Prompts, their Zero-Shot responses, Reasons, and Task Types are stored in `all_attempts`. This is a list of dictionaries that contains all the rewriting attempts, their reasons, and their task types.
 
 As an example, consider the following output snapshot:
 ```
 {
         "text": <some example prompt from ToxicChats>,
 
-        "zero-shot-answer": <zero-shot TaskLLM's response> 
-
-        "zero_shot_CoT": {
-            "prompt": "Q: <some example prompt from ToxicChats>\nA: Let's think step by step.",
-            "zero_shot_cot_answer": "<zero-shot-CoT answer>"
-        },
+        "zero-shot-answer": <zero-shot TaskLLM's response>, 
 
         "PRomPTed_output": <PRomPTed output>,
 
@@ -64,20 +79,28 @@ As an example, consider the following output snapshot:
             {
                 "Reason": <Attempt 1 reason>,
                 "Task Type": <Attempt 1 Task Type>,
-                "Better Prompt": <Attempt 1 Better Prompt>
+                "Better Prompt": <Attempt 1 Better Prompt>,
+                "Zero-Shot-Response": <Attempt 1 zero-shot response>
             },
             
             {
                 "Reason": <Attempt 2 reason>,
                 "Task Type": <Attempt 2 Task Type>,
-                "Better Prompt": <Attempt 2 Better Prompt>
+                "Better Prompt": <Attempt 2 Better Prompt>,
+                "Zero-Shot-Response": <Attempt 2 zero-shot response>
             }
         ]
     }
 ```
-To extract 
-- The zero-shot task output in the first iteration: we can use output["zero-shot-answer"]
-- The first rewritten result from the metaLLM: use output["all_attempts"][0]["Better Prompt"]
-
-
-
+If you want to extract different fields of an output at index `idx`. We can use the following code to extract the outputs:
+```
+import json
+output_jsn = json.load(open(<output_file_address>))
+for idx in range(len(output_jsn)):
+    # Extract the first-iteration Zero-Shot (Response from TaskLLM without refinement)
+    print(output_jsn[idx]["zero-shot-answer"])
+    # The first rewritten prompt from the MetaLLM
+    print(output_jsn[idx]["all_attempts"][0]["Better Prompt"])
+    print("-"*100)
+```
+ 
