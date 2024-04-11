@@ -24,6 +24,7 @@ Now, clone the repository using the following:
 ```
 git clone https://github.com/salokr/PRoPMTed.git
 cd PRoPMTed
+mkdir outputs
 ```
 ## Setting up the keys.
 Set the OpenAI key using the following command:
@@ -57,6 +58,7 @@ Where
 | gpt-3.5-turbo-1106 | gpt-3.5-turbo-1106 | ./data/Meta_Prompt_GPT_35.txt | python toxic_chats.py --meta_llm gpt-3.5-turbo-1106 --task_llm gpt-3.5-turbo-1106 --meta_prompt_address ./data/Meta_Prompt_GPT_35.txt --max_attempts 3 |
 
 ## Collecting the Outputs.
+Our code saves the outputs in a file with the naming convention as `./outputs/<task_name>_task_LLM_<TaskLLM>_meta_LLM_<MetaLLM>.json`.
 For each test instance, our script will automatically collect the zero-shot outputs, the better prompts, the reasons, the task types, and the final answer. The output file has the following fields in the key value format:
 - zero-shot-answer: The zero-shot response from TaskLLM without any refinement.
 - Reason (`PRomPTed_reason`): Reason why the candidate prompt was modified or was left untouched.
