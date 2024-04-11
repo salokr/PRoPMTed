@@ -108,6 +108,7 @@ for idx in range(len(output_jsn)):
  
 ## Creating a custom data loader and custom PRomPTed script.
 In addition, we also provide a `PRomPTed.py` which can be used to run on any other dataset of your choice. To run PRomPTed on your dataset, please make the following changes to PRomPTed.py:
+
 The code assumes that the input is a JSON file with the following format:
 ```
 [
@@ -116,7 +117,9 @@ The code assumes that the input is a JSON file with the following format:
      ...
 ]
 ``` 
-If you need to use any other data loader, you can use the following scripts:
+
+
+### A) If you need to use any other data loader, you can use the following scripts (modify line #85):
 1) For JSONL formats use the following:
 ```
 jsn = [json.loads(x) for x in open(dataset_address)]
@@ -127,3 +130,8 @@ jsn = json.load(open(dataset_address))["examples"]
 ```
 3) Any other:
 Please create your custom data loader function and specify the test-instance field at line 88 in PRomPTed.py
+
+### B) Setting up the answer extraction script.
+Next, you need to specify the evaluation script or any other answer extraction method (such as regex) in the `extract_answer` function on line #61.
+
+
