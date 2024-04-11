@@ -18,12 +18,12 @@ To get started, set up the environment:
 ```
 python -m venv myenv 
 source myenv/bin/activate
-pip install -r requirements.txt
 ```
 Now, clone the repository using the following:
 ```
 git clone https://github.com/salokr/PRoPMTed.git
 cd PRoPMTed
+pip install -r requirements.txt
 mkdir outputs
 ```
 ## Setting up the keys.
