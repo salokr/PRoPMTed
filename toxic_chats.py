@@ -4,7 +4,7 @@ import openai
 from tqdm import tqdm
 import tiktoken
 import argparse
-from openai import OpenAI
+from openai import OpenAI, AzureOpenAI
 client = OpenAI()
 
 encoder=tiktoken.encoding_for_model('gpt-4')
@@ -19,6 +19,7 @@ parser.add_argument("--api_type", type=str,default="openai", help = "azure or op
 args = parser.parse_args()
 
 if(args.api_type=="azure"):
+    client = AzureOpenAI()
     openai.api_type = "[PLEASE SET]"
     openai.api_base = "[PLEASE SET]"
     openai.api_version = "[PLEASE SET]"
