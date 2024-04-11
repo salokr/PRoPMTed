@@ -52,6 +52,7 @@ def gpt_response(prompt, model_name, count_tokens = True, text = None):
         print("Exception", e)
     return response
 
+# Please modify this function as per your usage. You can specify the stopping criterion in your meta scipts and then specify them here to stop the refinement process.
 def stopping_criterion(reason):
     if("is correct" in reason.lower() or reason.lower().strip().startswith("correct") or reason.lower().strip().startswith("well-crafted")or reason.lower().strip().startswith("well-alligned")or reason.lower().strip().startswith("clear")or reason.lower().strip().startswith("a well-crafted")):
         return True
