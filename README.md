@@ -55,7 +55,7 @@ Where
 |:------------------:|:------------------:|:-----------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------:|
 |      gpt-4-32k     |        gpt-4       |  ./data/Meta_Prompt_GPT_4.txt |             python toxic_chats.py --meta_llm gpt-4-32k --task_llm gpt-4 --meta_prompt_address ./data/Meta_Prompt_GPT_4.txt --max_attempts 3            |
 | gpt-3.5-turbo-1106 |        gpt-4       |  ./data/Meta_Prompt_GPT_4.txt |        python toxic_chats.py --meta_llm gpt-3.5-turbo-1106 --task_llm gpt-4 --meta_prompt_address ./data/Meta_Prompt_GPT_4.txt --max_attempts 3        |
-| gpt-3.5-turbo-1106 | gpt-3.5-turbo-1106 | ./data/Meta_Prompt_GPT_35.txt | python toxic_chats.py --meta_llm gpt-3.5-turbo-1106 --task_llm gpt-3.5-turbo-1106 --meta_prompt_address ./data/Meta_Prompt_GPT_35.txt --max_attempts 3 |
+| gpt-3.5-turbo-1106 | gpt-3.5-turbo-1106 | ./data/Meta_Prompt_GPT_35_Turbo.tx | python toxic_chats.py --meta_llm gpt-3.5-turbo-1106 --task_llm gpt-3.5-turbo-1106 --meta_prompt_address ./data/Meta_Prompt_GPT_35_Turbo.tx --max_attempts 3 |
 
 ## Collecting the Outputs.
 Our code saves the outputs in a file with the naming convention as `./outputs/<task_name>_task_LLM_<TaskLLM>_meta_LLM_<MetaLLM>.json`.
