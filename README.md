@@ -50,7 +50,7 @@ Where
 
 **Make sure to use the correct meta prompt file for each Task LLM. For GPT-4 please use `Meta_Prompt_GPT_4.txt` while for GPT-3.5-turbo please use the file `Meta_Prompt_GPT_35.txt`**. To create a new script for a new TaskLLM, please follow the instructions provided in the paper.
 
-### In the following table, we enumerate parameters to run our code.
+### In the following table, we enumerate parameters to run our code for ToxicChats.
 |    **Meta LLM**    |    **Task LLM**    |    **Meta Prompt Address**    |                                                                       **Command**                                                                      |
 |:------------------:|:------------------:|:-----------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------:|
 |      gpt-4-32k     |        gpt-4       |  ./data/Meta_Prompt_GPT_4.txt |             python toxic_chats.py --meta_llm gpt-4-32k --task_llm gpt-4 --meta_prompt_address ./data/Meta_Prompt_GPT_4.txt --max_attempts 3            |
