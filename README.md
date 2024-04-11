@@ -94,7 +94,7 @@ As an example, consider the following output snapshot:
         ]
     }
 ```
-If you want to extract different fields of an output at index `idx`. We can use the following code to extract the outputs:
+If you want to extract different fields of output at index `idx`. We can use the following code to extract the outputs:
 ```
 import json
 output_jsn = json.load(open(<output_file_address>))
@@ -106,3 +106,24 @@ for idx in range(len(output_jsn)):
     print("-"*100)
 ```
  
+## Creating a custom data loader and custom PRomPTed script.
+In addition, we also provide a `PRomPTed.py` which can be used to run on any other dataset of your choice. To run PRomPTed on your dataset, please make the following changes to PRomPTed.py:
+The code assumes that the input is a JSON file with the following format:
+```
+[
+     {"Question": <prompt>, "Other fields such as Ground Truth Outputs, etc.": <fields values>},
+     {"Question": <prompt>, "Other fields such as Ground Truth Outputs, etc.": <fields values>},
+     ...
+]
+``` 
+If you need to use any other data loader, you can use the following scripts:
+1) For JSONL formats use the following:
+```
+jsn = [json.loads(x) for x in open(dataset_address)]
+```
+2) For BigBench tasks:
+```
+jsn = json.load(open(dataset_address))["examples"]
+```
+3) Any other:
+Please create your custom data loader function and specify the test-instance field at line 88 in PRomPTed.py
