@@ -3,13 +3,24 @@ This repository contains the code for our paper: Instances Need More Care: Rewri
 
 If you find our work helpful, please cite it as
 ```
-@misc{srivastava2024instances,
-      title={Instances Need More Care: Rewriting Prompts for Instances with LLMs in the Loop Yields Better Zero-Shot Performance}, 
-      author={Saurabh Srivastava and Chengyue Huang and Weiguo Fan and Ziyu Yao},
-      year={2024},
-      eprint={2310.02107},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@inproceedings{srivastava-etal-2024-instances,
+    title = "Instances Need More Care: Rewriting Prompts for Instances with {LLM}s in the Loop Yields Better Zero-Shot Performance",
+    author = "Srivastava, Saurabh  and
+      Huang, Chengyue  and
+      Fan, Weiguo  and
+      Yao, Ziyu",
+    editor = "Ku, Lun-Wei  and
+      Martins, Andre  and
+      Srikumar, Vivek",
+    booktitle = "Findings of the Association for Computational Linguistics ACL 2024",
+    month = aug,
+    year = "2024",
+    address = "Bangkok, Thailand and virtual meeting",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.findings-acl.371",
+    pages = "6211--6232",
+    abstract = "Large language models (LLMs) have revolutionized zero-shot task performance, mitigating the need for task-specific annotations while enhancing task generalizability. Despite its advancements, current methods using trigger phrases such as {``}Let{'}s think step by step{''} remain limited. This study introduces PRomPTed, an approach that optimizes the zero-shot prompts for individual task instances following an innovative manner of {``}LLMs in the loop{''}.Our comprehensive evaluation across 13 datasets and 10 task types based on GPT-4 reveals that PRomPTed significantly outperforms both the naive zero-shot approaches and a strong baseline (i.e., {``}Output Refinement{''}) which refines the task output instead of the input prompt. Our experimental results also confirmed the generalization of this advantage to the relatively weaker GPT-3.5. Even more intriguingly, we found that leveraging GPT-3.5 to rewrite prompts for the stronger GPT-4 not only matches but occasionally exceeds the efficacy of using GPT-4 as the prompt rewriter. Our research thus presents a huge value in not only enhancing zero-shot LLM performance but also potentially enabling supervising LLMs with their weaker counterparts, a capability attracting much interest recently. Finally, our additional experiments confirm the generalization of the advantages to open-source LLMs such as Mistral 7B and Mixtral 8x7B.",
+}
 ```
 ## Setting up the environment.
 This project is tested in Python 3.9.6.
